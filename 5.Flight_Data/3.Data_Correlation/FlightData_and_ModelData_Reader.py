@@ -6,11 +6,12 @@ certain time. The number of rows in each file is different.
 Create a function to plot the data and save everything to np.arrays  
 where one column is the model temperatures and the other the flight temperatures
 """
-
+#%% Import libraries
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+#%% Read data
 def read_data(filename):
     """
     Reads data from a .csv file and returns a numpy array
@@ -18,7 +19,7 @@ def read_data(filename):
     data = pd.read_csv(filename, header=None)
     return data.values
 
-
+#%% Plot data
 def plot_data(model_data, test_data):
     """
     Plots the data from the model and the test data
@@ -28,7 +29,7 @@ def plot_data(model_data, test_data):
     plt.legend()
     plt.show()
 
-
+#%% Main
 def main():
     """
     Main function
@@ -37,6 +38,6 @@ def main():
     test_data = read_data('flight_data.csv')
     plot_data(model_data, test_data)
 
-
+#%% Run main
 if __name__ == '__main__':
     main()
