@@ -1,0 +1,74 @@
+\section{Test Parameters}\label{sec:Test_Parameters}
+In this chapter ....
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Test requirements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Test tolerances}
+Temperature tolerances for temperature set point of Shroud and Base Plate are +/- 3 ºC.
+Pressure tolerances for TBT HOC Test (14 mbar) are +/- 3 mbar.
+Pressure tolerances for TBT COC Test (84 mbar) are +/- 6 mbar.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Equipment power dissipation}
+
+\begin{table}[H]
+\centering
+\caption{Power consumption for the various elements in the TASEC-Lab CubeSat for the cold-case scenario (COC) and hot-case scenario (HOC).}
+\label{tab:TPa-Power-budget}
+\begin{tabular}{ccc} \hline
+                  & \multicolumn{2}{c}{Power Consuption (W)} \\ \hline \hline
+Element           & COC                 & HOC                \\
+Plate Heater      & 0.5                 & 0.1                \\
+Battery Heater    & 0.5                 & 0.5                \\
+Raspberry Pi 3B+  & \multicolumn{2}{c}{1.8}                  \\
+GPS               & \multicolumn{2}{c}{0.0858}               \\
+GPS Module        & \multicolumn{2}{c}{0.1551}               \\
+GPS Antenna       & \multicolumn{2}{c}{0.0495}               \\
+Pressure Sensor 1 & \multicolumn{2}{c}{0.000005}             \\
+Pressure Sensor 1 & \multicolumn{2}{c}{0.000005}             \\
+IMU               & \multicolumn{2}{c}{0.01518}              \\
+Battery           & \multicolumn{2}{c}{0.4}                 \\ \hline
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Success \& Failure criteria}
+ Once the test has been completed the staff responsible for the testing procedure must decide wether or not it has been completed satisfactorily, or if, on the contrary, it does not pass the established success criteria.\\
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{The test will be considered as accepted if}:
+Any part of the cubesat is not damaged and the temperature limits are not exceeded. The TBT test must accomplish the stabilization criteria:
+•	$\mathrm{\Delta} T < 1 °C/h$
+
+•	dwell time = 2 h
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{The test will be considered as not accepted if}:
+
+If any of the thermocouples or temperature sensors (electronic temperature sensors, TC74 and PT1000 sensors) exceed the temperature limits shown in Table 2 the test shall be stopped or the thermal and pressure scenario shall be modified.
+
+ \begin{table}[H]
+\centering
+\caption{Temperature limits for the components of the TASEC-Lab CubeSat}
+\label{tab:TPa-Temp-limits-TASEC-Lab}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ccccc} \hline
+Element                                                                                 & \begin{tabular}[c]{@{}c@{}}Minimum\\    Operating\\    Temperature\end{tabular} & \begin{tabular}[c]{@{}c@{}}Maximum\\    Operating\\    Temperature\end{tabular} & Reference                    & \begin{tabular}[c]{@{}c@{}}Temperature sensors\\    \\ ID\end{tabular}               \\ \hline \hline
+\begin{tabular}[c]{@{}c@{}}Raspberry\\    \\ Presssure sensors\\    \\ IMU\end{tabular} & 0                                                                               & +65                                                                             & ref   raspberry              & Electronics   internal temperature sensors                                           \\
+Battery                                                                                 & +5                                                                              & +40*                                                                            & Pindado   meeting April 28th & TC\_4                                                                                \\
+Heated plate                                                                            & ‒15                                                                             & +70                                                                             & Defined   by TASEC team      & \begin{tabular}[c]{@{}c@{}}PT\_5\\    \\ PT\_6\end{tabular}                          \\
+Structure                                                                               & ‒15                                                                             & +70                                                                             & Defined   by TASEC team      & \begin{tabular}[c]{@{}c@{}}TC\_5 to TC\_13\\    \\ TC74\_1 to   TC\_5\end{tabular}   \\
+Air                                                                                     & ‒15                                                                             & +70                                                                             & Defined   by TASEC team      & \begin{tabular}[c]{@{}c@{}}TC\_14\\    \\ TC\_15\\    \\ PT\_1 to PT\_4 
+\end{tabular} \\ \hline
+\end{tabular}
+}
+\end{table}
+
+*The battery resist a short period between 50ºC and 60ºC
+
+
+CRITICAL TEMPERATURE SENSORS:
+•	TBT HOC test: PT1000 of the aluminum plate (PT\_5) and of the heater (PT\_6).
+•	TBT COC test: Internal temperature sensors of the electronics (Raspberry, pressure sensors, IMU).

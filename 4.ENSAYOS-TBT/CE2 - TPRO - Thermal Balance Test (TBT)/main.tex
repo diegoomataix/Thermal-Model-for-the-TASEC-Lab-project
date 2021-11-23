@@ -1,0 +1,260 @@
+\documentclass[11pt,a4paper,titlepage]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%% PACKAGES %%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%% Removing the spacing before chapter name: %%%%%% 
+\usepackage{titlesec}
+\titleformat{\section}[display]
+{\normalfont\bfseries}{}{0pt}{\Large}
+%{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+% this alters "before" spacing (the second length argument) to 0
+\titlespacing*{\section}{0pt}{250pt}{0pt}
+%%%%%% %%%%%% %%%%%% %%%%%% %%%%%% %%%%%% %%%%%% %%%%%% 
+\usepackage[includemp,
+            top=2 cm,
+            left = 1.2 cm, 
+            right = 1.2 cm,
+            bottom=2 cm,
+            headsep = 1.5 cm,
+            marginparwidth=2 cm,
+            marginparsep=0.4 cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+%\usepackage[spanish]{babel}
+% \decimalpoint
+%\renewcommand{\spanishtablename}{Tabla}
+\usepackage[intoc]{nomencl}
+\usepackage{booktabs}
+\usepackage[pdftex]{graphicx}
+\usepackage{subfigure}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{etoolbox}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+%\hypersetup{colorlinks=true, linkcolor=black, citecolor=blue, urlcolor = black}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[bottom]{footmisc}
+\usepackage{url}
+\usepackage{tabu}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage[title]{appendix}
+\setlength{\parskip}{5pt}
+%\usepackage{biblatex}
+%\addbibresource{references.bib}
+%\setlength\parindent{0pt}
+\bibliographystyle{elsarticle-num}
+\usepackage{svg}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{indentfirst}
+\usepackage{relsize}
+\usepackage{xcolor}
+\usepackage{comment}
+\usepackage{colortbl}
+\usepackage{bigstrut}
+\usepackage{bigints}
+\usepackage[T1]{fontenc}
+\usepackage[numbered]{matlab-prettifier}
+\usepackage{threeparttable}
+\usepackage{bm}
+\DeclareMathOperator{\Tr}{Tr}
+\usepackage{enumitem}                   % Selecionar la forma del item
+
+\usepackage{placeins}  %para poder poner Floatbarrier
+\usepackage{gensymb} %para hacer los circulitos de grados
+\usepackage{comment} %comentar en bloque
+\usepackage{listings} %para el codigo de python
+\lstset{
+    inputencoding=utf8,
+    literate={Á}{{\'A}}1 {á}{{\'a}}1 {É}{{\'E}}1 {é}{{\'e}}1 {Í}{{\'I}}1 {í}{{\'i}}1 {Ó}{{\'O}}1 {ó}{{\'o}}1 {Ú}{{\'U}}1 {ú}{{\'u}}1 
+}
+\usepackage{derivative}
+\usepackage{amsmath,amssymb}
+\usepackage{eurosym}
+
+%\addto\extrasenglish{
+    \renewcommand{\subsubsectionautorefname}{Section}
+    \renewcommand{\subsectionautorefname}{Section}
+    \renewcommand{\sectionautorefname}{Section}
+%}
+
+\usepackage{setspace}
+\spacing{1.2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%% CONFIGURATION %%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\ph\mlplaceholder % shorter macro
+\lstMakeShortInline"
+
+\lstset{
+  style              = Matlab-editor,
+  basicstyle         = \mlttfamily,
+  escapechar         = ",
+  mlshowsectionrules = true,
+}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\newcommand\summaryname{Abstract}
+\newenvironment{Abstract}%
+    {\small\begin{center}%
+    \bfseries{\summaryname} \end{center}}
+
+\newlength{\myoddoffset}
+\setlength{\myoddoffset}{\marginparwidth + \marginparsep + 0.5cm}
+
+\fancyheadoffset[rh]{\myoddoffset}
+\fancyfootoffset[rh]{\myoddoffset}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{ \hspace{1pt} \rightmark}
+\lhead{\includegraphics[width = 4.2cm]{z_Figures_portada/upm_logo.png}}
+ %%%%%%%%%%%%%%%%%%%% Header %%%%%%%%%%%%%%%%%%%%
+\rhead{Modelling of the Thermal Control System for the TASEC-Lab stratospheric CubeSat}
+\lfoot{} \cfoot{} \rfoot{\thepage}
+
+
+
+\begin{document}
+
+
+%\lhead{\footnotesize{\textit{\textsc{Universitat Politècnica de Catalunya}}}}
+%\rhead{\footnotesize{\textit{\textsc{ESEIAAT}}}}
+%\lfoot{\scriptsize{\textit{\textsc{Space \cfoot{} 
+%\rfoot{\thepage}
+
+\graphicspath{{./Figures/}}
+\newgeometry{top=1.1in, bottom=2in, left = 2cm, right = 2cm, headsep = 1.5cm, ignoremp}
+\fancyheadoffset[rh]{0pt}
+\fancyfootoffset[rh]{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%% Cover Page stuff %%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+\begin{center}
+\vspace*{0in}
+\begin{figure}[htb]
+\centering
+\includegraphics[width = 0.40\linewidth]{z_Figures_portada/upm_logo.png}
+\end{figure}
+
+\vspace*{0.2in}
+\rule{\linewidth}{0.4mm}\\
+\vspace*{0.1in}
+\begin{huge}
+ %%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%
+\textbf{\scshape{THERMAL BALANCE TEST PROCEDURE FOR THE TASEC-LAB (B2Space) PROJECT}} \\
+\end{huge}
+\vspace*{0.1in}
+\begin{large}
+\begin{normalsize}
+\scshape{Case Study}\\
+\scshape{MSc in Space Systems (IDR-UPM)}
+\end{normalsize}
+\end{large} 
+\vspace*{0.2in}
+\rule{\linewidth}{0.4mm}\\
+\vspace*{0.6in}
+\begin{large}
+\begin{tabular}{c}
+ \\
+\begin{tabular}{ l l }
+        \textit{Author}: & Diego Mataix Caballero \\
+         & \\
+        \textit{Project Supervisors}: & Alejandro Fernández Soler\\
+        & David González Bárcena 
+\end{tabular}
+
+\end{tabular}
+\end{large}
+
+\vspace*{0.5in}
+\begin{large}
+\textsc{Madrid, November 2022}
+\end{large}
+\end{center}
+\end{titlepage}
+
+%\clearpage\hbox{}\thispagestyle{empty}\newpage
+
+\input{0_Abstract}
+
+%\clearpage\hbox{}\thispagestyle{empty}\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                %%%%%%%%%%%  Actual content goes here %%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Table of contents
+\vspace*{0.8cm}
+\pagenumbering{gobble}
+\tableofcontents
+
+\renewcommand{\listtablename}{Lists of Tables}
+
+\newpage
+	\pagenumbering{roman}
+    \raggedbottom
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+\clearpage
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+\clearpage
+\addcontentsline{toc}{section}{Acronyms}
+\section*{List of Acronyms}
+\input{99_Abbreviations}
+
+
+
+\clearpage
+\setcounter{page}{0}
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{1_Introduction}
+\input{2_Test_Overview}
+\input{3_Test_Set_up}
+\input{4_Test_Parameters}
+\input{5_Test_Procedure}
+\input{6_Conclusions}
+%\appendix
+%\input{Anexo A}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+%\addcontentsline{toc}{section}{Referencias}
+%\bibliography{references.bib}
+%\printbibliography
+
+%Bibliografía
+%Se añade la bibliografía al índice
+\phantomsection
+\addcontentsline{toc}{section}{Bibliography}
+%\renewcommand{\ref{name}{Bibliography}
+%Reducir espaciado
+\spacing{1.4}
+\bibliographystyle{elsarticle-num}
+\bibliography{Bibliography}
+
+
+\end{document}
