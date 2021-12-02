@@ -6,10 +6,12 @@
 Disclaimer:
 
 - The files contained in the following folders were created by the various collaborators to the project at IDR in the Polytechnic University of Madrid:
-  - CATIA Assembly
-  - Datos_Grabados
-  - ENSAYOS
-- The files contained in the following folder are property of ESATAN-TMS:
-  - ESATAN-TMS
+  - 1.CATIA Assembly
+  - 3.ENSAYOS
+  - 5.Flight_Data/0.Datos_Grabados 
+
+- The files contained in the following folders are property of ESATAN-TMS and various other authors:
+  - 0.ESATAN-TMS
+  - 2.Components
 
   
