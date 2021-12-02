@@ -11,7 +11,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy.lib.npyio import save
 import pandas as pd
-from scipy.interpolate import make_interp_spline, BSpline
 from cycler import cycle
 
 #%% Main #######################################################################
@@ -36,10 +35,11 @@ def flight_model_data():
     Reads the flight and model data and returns it and plots it separately
     """
     #### Read data (HTL) ####
-    HTL_fd = read_data('5.Flight_Data/1.Flight_Data_relevant/tc74s.csv', [2,3,4,5,6,7])
+    HTL_fd = read_data('5.Flight_Data/1.Flight_Data_relevant/tc74s_interp.csv', [2,3,4,5,6,7])
     # HTL_md = read_data('5.Flight_Data\2.Thermal_md\HTL_node_temps.csv')
     #### Read data (Other temps) ####
-    Temps_fd = read_data('5.Flight_Data/1.Flight_Data_relevant/pt1000s.csv', [2,3,6,9,12,15,18,2])
+    Temps_fd = read_data(
+        '5.Flight_Data/1.Flight_Data_relevant/pt1000s_interp.csv.', [2, 3, 6, 9, 12, 15, 18, 2])
     # Temps_md = read_data('5.Flight_Data\2.Thermal_md\Temps_node_temps.csv')
     #### Plot data (HTL) ####
     plot_data(HTL_fd, len(HTL_fd.columns), 'HTL Flight Data Temperatures',
