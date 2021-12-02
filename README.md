@@ -11,7 +11,7 @@ Disclaimer:
   - 5.Flight_Data/0.Datos_Grabados 
 
 - The files contained in the following folders are property of ESATAN-TMS and various other authors:
-  - 0.ESATAN-TMS
+  - 0.Biblio
   - 2.Components
 
   
