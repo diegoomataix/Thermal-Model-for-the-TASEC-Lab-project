@@ -14,12 +14,12 @@ def main():
     """
     # Read data
     HTL_fd = read_data('5.Flight_Data/1.Flight_Data_relevant/tc74s.csv', [2,3,4,5,6,7])
-    Temps_fd = read_data('5.Flight_Data/1.Flight_Data_relevant/pt1000s.csv', [2,3,6,9,12,15,18,2])
+    Temps_fd = read_data('5.Flight_Data/1.Flight_Data_relevant/pt1000s.csv', [2,3,6,9,12,15,18,21])
 
     ## Interpolate data
-    HTL_fd_interp = interpolate_data(HTL_fd,500)
-    #print(HTL_fd_interp)
-    Temps_fd_interp = interpolate_data(Temps_fd,500)
+    HTL_fd_interp = interpolate_data(HTL_fd, 100)
+    Temps_fd_interp = interpolate_data(Temps_fd, 100)
+
     ## Save data
     save_data(HTL_fd_interp, '5.Flight_Data/1.Flight_Data_relevant/tc74s_interp.csv')
     save_data(Temps_fd_interp, '5.Flight_Data/1.Flight_Data_relevant/pt1000s_interp.csv')
@@ -36,26 +36,6 @@ def read_data(filename, ncols):
     return data#.values
 
 #%% Interpolate data ##########################################################
-#def interpolate_data(data): #NEEDS FIXING
-#    """
-#    Interpolates data to get a smooth curve using scipy.interpolate.BSpline
-#    Inputs: 
-#       - data - the data to be interpolated, the first column is the time, the rest are the values. Interpolate for each column separately
-#       Ignore the time column
-#    """
-#    #data_interp = np.zeros((data.shape[0], data.shape[1]))
-#    #data_interp[:, 0] = data[:, 0]
-#    #for i in range(1, data.shape[1]):
-#    #    tck = BSpline(data[:, 0], data[:, i], k=3)
-#    #    data_interp[:, i] = splev(data_interp[:, 0], tck, der=0)
-#    #return data_interp
-#    data_interp = np.zeros((data.shape[0], data.shape[1]))
-#    data_interp[:, 0] = data[:, 0]
-#    for i in range(1, data.shape[1]):
-#        data_interp[:, i] = np.interp(
-#            data_interp[:, 0], data[:, 0], data[:, i])
-#    return data_interp
-
 def interpolate_data(data,window=100):
     """ 
     Use pandas rolling method to take the moving average of specific columns of a pandas dataset. 

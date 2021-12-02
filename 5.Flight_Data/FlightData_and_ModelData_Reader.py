@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy.lib.npyio import save
 import pandas as pd
-from cycler import cycle
+from cycler import cycler
 
 #%% Main #######################################################################
 def main():
@@ -70,12 +70,15 @@ def plot_compare_data(md, fd, upto1, upto2, title, label, savepath=None):
     """
     Plots the data from the model and the flight data
     """
-    plt.style.use('grayscale')
-    linestyle = cycle(['-', '--', ':', '=.', '-.'])
+    #plt.style.use('grayscale')
     fig, ax = plt.subplots(1, 1, figsize=(50, 25))
-    #plt.rc('axes', prop_cycle=linestyle)
-    ax.plot(md[md.columns[0]], md[md.columns[1:upto1]], next(linestyle))
-    ax.plot(fd[fd.columns[0]], fd[fd.columns[1:upto2]], next(linestyle))
+    cycled = cycler('color', ['k', '#484a47', '#686967', '#828382', '#a5a5a5', '#b2b2b2', '#cccccc']) + \
+        cycler('linestyle', ['-', '--', ':', '-.',
+                             (0, (3, 1, 1, 1, 1, 1)), (0, (3, 1, 3, 1, 1, 2)), '-'])
+    ax.set_prop_cycle(cycled)
+    #
+    ax.plot(md[md.columns[0]], md[md.columns[1:upto1]])
+    ax.plot(fd[fd.columns[0]], fd[fd.columns[1:upto2]])
     fig.suptitle(title, fontsize=22)
     plt.xlabel('Time (s)',fontsize=16)
     plt.ylabel('Temperature $(^\circ\mathrm{C})$',fontsize=16)
@@ -101,11 +104,13 @@ def plot_data(md, upto, title, label, savepath=None):
         - Label (string for each of the columns)
         - Savepath (optional) - the path to save the plot to
     """
-    plt.style.use('grayscale')
-    linestyle = cycle(['-', '--', ':', '=.', '-.'])
     fig, ax = plt.subplots(1, 1, figsize=(50, 25))
-    #plt.rc('axes', prop_cycle=linestyle)
-    ax.plot(md[md.columns[0]], md[md.columns[1:upto]], next(linestyle))
+    cycled = cycler('color', ['k', '#484a47', '#686967', '#828382', '#a5a5a5', '#b2b2b2', '#cccccc']) + \
+        cycler('linestyle', ['-', '--', ':', '-.',
+                             (0, (3, 1, 1, 1, 1, 1)), (0, (3, 1, 3, 1, 1, 2)), '-'])
+    ax.set_prop_cycle(cycled)
+    #plt.style.use('grayscale')
+    ax.plot(md[md.columns[0]], md[md.columns[1:upto]])
     fig.suptitle(title, fontsize=22)
     plt.xlabel('Time (s)',fontsize=16)
     plt.ylabel('Temperature $(^\circ\mathrm{C})$',fontsize=16)
@@ -120,7 +125,7 @@ def plot_data(md, upto, title, label, savepath=None):
     fig.savefig(savepath)
 
 #%% Save data ##################################################################
-def save_data(data, filename):
+def save_data(data, filename): # could also use the function to save as .csv in Interpolate_Data.py
     """
     Saves the data to a .csv file
     Inputs:
