@@ -17,8 +17,9 @@ def main():
     Temps_fd = read_data('5.Flight_Data/1.Flight_Data_relevant/pt1000s.csv', [2,3,6,9,12,15,18,21])
 
     ## Interpolate data
-    HTL_fd_interp = interpolate_data(HTL_fd, 100)
-    Temps_fd_interp = interpolate_data(Temps_fd, 100)
+    # Note that a larger window will result in a smoother curve, but with a larger error
+    HTL_fd_interp = interpolate_data(HTL_fd, 200) 
+    Temps_fd_interp = interpolate_data(Temps_fd, 50)
 
     ## Save data
     save_data(HTL_fd_interp, '5.Flight_Data/1.Flight_Data_relevant/tc74s_interp.csv')
@@ -33,16 +34,23 @@ def read_data(filename, ncols):
         - ncols - the number of columns in the file as a list []
     """
     data = pd.read_csv(filename, usecols=ncols)
-    return data#.values
+    return data #.values
 
 #%% Interpolate data ##########################################################
 def interpolate_data(data,window=100):
     """ 
     Use pandas rolling method to take the moving average of specific columns of a pandas dataset. 
     """
-    # Create a new dataframe with the moving average of the columns
     data_interp = pd.DataFrame(index=data.index)
     data_interp[data.columns[0]] = data[data.columns[0]]
+
+    # Add constant values to the beginning of the dataset to get rid of NaN when doing the moving average
+    for i in range(1, window+1): 
+        data.loc[-i] = data.iloc[0]
+    data.index = data.index  + 1
+    data.sort_index(inplace=True)
+
+    # Calculate the moving average
     for i in range(1, data.shape[1]):
         data_interp[data.columns[i]] = data[data.columns[i]].rolling(window=window).mean()
     return data_interp.values
