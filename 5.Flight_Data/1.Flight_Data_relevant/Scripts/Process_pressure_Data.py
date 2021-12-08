@@ -7,7 +7,6 @@ Note! The pressure data is in mbar.
 #%% Import libraries ###########################################################
 import numpy as np
 import pandas as pd
-from scipy.interpolate import make_interp_spline, BSpline, splev, splrep
 import csv
 
 #%% Main #######################################################################

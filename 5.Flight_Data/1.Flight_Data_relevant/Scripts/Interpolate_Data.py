@@ -4,7 +4,6 @@ This program reads data from .csv files, interpolates it to get a smooth curve, 
 #%% Import libraries ###########################################################
 import numpy as np
 import pandas as pd
-from scipy.interpolate import make_interp_spline, BSpline, splev, splrep
 import csv
 
 #%% Main #######################################################################
